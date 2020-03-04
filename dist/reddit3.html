@@ -57,36 +57,29 @@
 
 		}
 
+		var result;
 		var smalpha = function(str) {
 
 			console.table(m);
 
-			var result = '';
+			var fstr = str;
+			result = [];
 			for(var i = 0; i < m.length; i++) {
 				var c = str.substring(0, m[i].length - 1);
-				console.log(c);
 
 				for(var j = 0; j < m.length; j++) {
-					if(m[j] == c) {
-						concatString(str, j, m[i].length);
-						console.log('m: ', String.fromCharCode(j + 97));
-						str = str.substring(m[i].length, str.length);
-					}
+					
 				}
 
 			}
 
 		}
 
+		//String.fromCharCode(k + 97)
+
 		var concatString = function(str, j, l) {
 
-			var c = str.substring(0, l - 1);
-			for(var k = j + 1; k < m.length; k++) {
-				if(m[k] == c) {
-					
-				}
-			}
-			
+
 		}
 
 		window.onload = reddit();
