@@ -1,0 +1,95 @@
+<!-- 
+
+
+	Examples
+	smorse("sos") => "...---..."
+	smorse("daily") => "-...-...-..-.--"
+	smorse("programmer") => ".--..-.-----..-..-----..-."
+	smorse("bits") => "-.....-..."
+	smorse("three") => "-.....-..."
+
+	
+	smalpha(".--...-.-.-.....-.--........----.-.-..---.---.--.--.-.-....-..-...-.---..--.----..")
+	    => "wirnbfzehatqlojpgcvusyxkmd"
+	smalpha(".----...---.-....--.-........-----....--.-..-.-..--.--...--..-.---.--..-.-...--..-")
+	    => "wzjlepdsvothqfxkbgrmyicuna"
+	smalpha("..-...-..-....--.---.---.---..-..--....-.....-..-.--.-.-.--.-..--.--..--.----..-..")
+	    => "uvfsqmjazxthbidyrkcwegponl"
+
+
+ -->
+<html>
+	<head>
+		<title>[Easy] Smooshed Morse Code 1</title>
+	</head>
+	<body>
+		<h1>Hello World!</h1>
+		<p>For the purpose of this challenge, Morse code represents every letter as a sequence of 1-4 characters, each of which is either . (dot) or - (dash). The code for the letter a is .-, for b is -..., etc. The codes for each letter a through z are:</p>
+		<p style="display: none;">.- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --..</p>
+	</body>
+	<script>
+		var reddit = function() {
+			
+			var morse = '.- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --..';
+			m = morse.split(' ');
+
+			/*
+			smorse('sos');
+			smorse('daily');
+			smorse('programmer');
+			smorse('bits');
+			smorse('three');
+			*/
+
+			smalpha(".--...-.-.-.....-.--........----.-.-..---.---.--.--.-.-....-..-...-.---..--.----..");
+
+		}
+
+		var smorse = function(str) {
+
+			console.log('smorse(', str, ')');
+
+			var tmp = '';
+			for(var i = 0; i < str.length; i++) {
+				tmp += m[str.charCodeAt(i) - 97];
+			}
+			console.log(' => ', tmp);
+
+		}
+
+		var smalpha = function(str) {
+
+			console.table(m);
+
+			var result = '';
+			for(var i = 0; i < m.length; i++) {
+				var c = str.substring(0, m[i].length - 1);
+				console.log(c);
+
+				for(var j = 0; j < m.length; j++) {
+					if(m[j] == c) {
+						concatString(str, j, m[i].length);
+						console.log('m: ', String.fromCharCode(j + 97));
+						str = str.substring(m[i].length, str.length);
+					}
+				}
+
+			}
+
+		}
+
+		var concatString = function(str, j, l) {
+
+			var c = str.substring(0, l - 1);
+			for(var k = j + 1; k < m.length; k++) {
+				if(m[k] == c) {
+					
+				}
+			}
+			
+		}
+
+		window.onload = reddit();
+	</script>
+</html>
+
