@@ -40,8 +40,10 @@
 			smorse('bits');
 			smorse('three');
 			*/
+			makeTree();
 
 			smalpha(".--...-.-.-.....-.--........----.-.-..---.---.--.--.-.-....-..-...-.---..--.----..");
+
 
 		}
 
@@ -57,30 +59,66 @@
 
 		}
 
+		var morse_tree = [];
+		var makeTree = function() {
+
+			var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+			for(var i = 0; i < alphabet.length; i++) {
+				//morse_tree.push({m[i]: alphabet.substring(i, i + 1)});
+				morse_tree.push({m: m[i], a: alphabet.substring(i, i+1)});
+			}
+
+			console.table(morse_tree);
+			console.log(morse_tree[1].m);
+
+		}
+
+		var len;
+		var fstr;
 		var result;
 		var smalpha = function(str) {
 
-			console.table(m);
+			//console.table(m);
 
-			var fstr = str;
+			len = str.length;
+			fstr = str;
 			result = [];
-			for(var i = 0; i < m.length; i++) {
-				var c = str.substring(0, m[i].length - 1);
 
-				for(var j = 0; j < m.length; j++) {
-					
+			concatString(str, len, 0);
+
+		}
+
+		var count = 0;
+		var concatString = function(str, len, start) {
+
+			console.log('str', str, 'len', len);
+
+			var i;
+			if( len > 40 ) {
+				for(i = start; i < morse_tree.length; i++) {
+					var tmor = morse_tree[i].m;
+					var tstr = str.substring(str.length - len, str.length - len + tmor.length);
+					//console.log(tmor, tstr);
+					if(tmor == tstr) {
+						console.log('i', i);
+						concatString(str, len - tmor.length, 0);
+					}
 				}
-
 			}
+
+			/*
+			if(len == 0) {
+				return;
+			} else {
+				concatString(str, len, i + 1);
+			}
+			*/
+
 
 		}
 
 		//String.fromCharCode(k + 97)
-
-		var concatString = function(str, j, l) {
-
-
-		}
 
 		window.onload = reddit();
 	</script>
